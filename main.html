@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Front Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="navigation">
-        <a id="logo">Crypto Tracker Dashboard</a>
-        <input type="text" placeholder="Search">
-        <button id="top_search" type="submit">Search</button>
-        <a id="account" href="#">Account</a>
-        <a href="#">Watchlist</a>
-        <a href="#">Logout</a>
+    <div id="navbar">
+        <div id="logo"><img src="#" alt="logo"></div>
+        <div id="searchNav">
+            <input type="text" id="searchNAV" placeholder="Search Crpyto">
+            <button type="submmit" id="navButton"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </div>
+        <div id="otherNav">
+            <div id="account">
+                <a href="#" class="nav">Account</a>
+            </div>
+            <div id="logout">
+                <a href="#" class="nav">Logout</a>
+            </div>
+        </div>
     </div>
+    
 </body>
 </html>

@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+body {
+    background-color: #121212; /* Dark background for contrast */
+}
+
+/* Navbar Styles */
+#navbar {
+    background-color: #1a1d1de1;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo Section */
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0056b3;
+    width: 150px;
+    height: 45px;
+    border-radius: 5px;
+}
+
+#logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Search Bar */
+#searchNav {
+    display: flex;
+    width: 50%;
+}
+
+#searchNAV {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+    background-color: #262626;
+    color: white;
+}
+
+#navButton {
+    background-color: #2680ed;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+#navButton:hover {
+    background-color: #0056b3;
+}
+
+/* Other Navigation Links */
+#otherNav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 4px;
+}
+
+.nav:hover {
+    background-color: #2680ed;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    #searchNav {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #otherNav {
+        width: 100%;
+        justify-content: space-around;
+    }
+}
