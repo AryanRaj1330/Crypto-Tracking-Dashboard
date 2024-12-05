@@ -1,0 +1,23 @@
+*{
+    color:white;
+}
+#logo{
+    color:blue;
+    font-weight:bolder;
+    font-family:cursive;
+    margin-right:250px
+}
+#navigation{
+    background-color:rgb(26,26,25);
+    height:40px;
+}
+
+#top_search{
+    background-color:rgb(21, 152, 204);
+}
+#account{
+    margin-left:100px;
+}
+a{
+    margin-right:100px;
+}
