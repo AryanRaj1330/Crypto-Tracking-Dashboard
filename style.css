@@ -9,8 +9,11 @@
     height:60px;
     display:flex;
     color:white;
+    align-items:center;
 }
-
+body{
+    background-color:#021183;
+}
 #logo{
     display:flex;
     justify-content: center;
@@ -69,16 +72,47 @@
     margin-top:30px;
     margin-left:150px;
     height:80px;
-    border:solid;
+    color:white;
 }
 
 #parentTable{
     display:flex;
-    justify-content:center;
 }
 #table{
     border:solid;
     height:500px;
-    width:80%;
-    display:flex;
+    width:50%;
+    color:skyblue;
+    margin-left:150px;
+    border-radius:4px;
+    overflow:hidden;
+}
+
+.currency{
+    cursor:pointer;
+}
+.currency:hover{
+    color:red;
+    text-decoration: underline;
+}
+
+#crypto{
+    background-color:#1a1d1d;
+    height:50px;
+    border:solid red 4px;
+    border-radius:4px;
+}
+
+#crypto tr{
+    border:4px solid #1a1d1d;
+    border-radius:10px;
+}
+td{
+    font-weight: 550;
+    border-bottom:solid black;
+}
+#insideTable{
+    width:100%;
+    height:100%;
+    border-collapse:collapse;
 }

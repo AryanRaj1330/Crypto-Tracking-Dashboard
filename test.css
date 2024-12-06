@@ -1,13 +1,15 @@
+/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    color: white;
 }
 
+/* Body Background */
 body {
-    background-color: #121212; /* Dark background for contrast */
+    background-image:url("395434.jpg");
+    background-size:cover; /* Restoring original body background color */
 }
 
 /* Navbar Styles */
@@ -15,98 +17,157 @@ body {
     background-color: #1a1d1de1;
     height: 60px;
     display: flex;
+    color: white;
     justify-content: space-between;
-    align-items: center;
     padding: 0 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    align-items: center;;
 }
 
-/* Logo Section */
 #logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0056b3;
+    background-color: blue;
     width: 150px;
-    height: 45px;
-    border-radius: 5px;
+    height: 40px;
+    border-radius: 8px;
 }
 
-#logo img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Search Bar */
 #searchNav {
     display: flex;
-    width: 50%;
+    align-items: center;
+    width: 60%;
 }
 
 #searchNAV {
-    width: 100%;
+    width: 80%;
     padding: 10px;
-    border: none;
-    border-radius: 4px 0 0 4px;
     font-size: 16px;
-    background-color: #262626;
-    color: white;
+    border-radius: 4px;
+    border: none;
 }
 
 #navButton {
-    background-color: #2680ed;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    color: white;
     display: flex;
-    align-items: center;
     justify-content: center;
-    transition: background-color 0.3s;
+    align-items: center;
+    background-color: #2680ed;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    color: white;
+    border: none;
+    margin-left: 10px;
 }
 
 #navButton:hover {
-    background-color: #0056b3;
+    background-color: #0b56b1;
 }
 
-/* Other Navigation Links */
+/* Account and Logout Link Styles */
 #otherNav {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    align-items: center; /* Ensures items are aligned horizontally */
+    justify-content: space-evenly; /* Distributes space evenly between Account and Logout */
+    width: 200px;
+    margin-left: 20px; /* Adds a small margin to the left */
+}
+
+#account, #logout {
+    margin-right: 10px; /* Adds space between Account and Logout */
+}
+
+#account:hover{
+    text-decoration: underline;
+}
+#logout:hover{
+    text-decoration: underline;
 }
 
 .nav {
     text-decoration: none;
     font-size: 18px;
     color: white;
-    padding: 5px 10px;
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 4px;
+    font-weight: 500;
 }
 
 .nav:hover {
-    background-color: #2680ed;
-    color: white;
+    color: #2680ed; /* Change text color on hover */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    #navbar {
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-    }
+/* Table Styles */
+#heading {
+    margin-top: 30px;
+    margin-left: 150px;
+    color: white;
+    font-size: 32px;
+}
 
-    #searchNav {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+#parentTable {
+    display: flex;
+    justify-content: flex-start; /* Align table to the left */
+    margin-top: 30px;
+}
 
-    #otherNav {
-        width: 100%;
-        justify-content: space-around;
-    }
+#table {
+    width: 50%; /* Ensures table takes up 50% of the screen width */
+    background-color: #1a1d1d;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-left:150px;
+}
+
+#insideTable {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+thead#crypto {
+    background-color: #2b2b2b;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+#crypto th {
+    padding: 10px 15px;
+}
+
+tbody {
+    background-color: #1d1d1d;
+}
+
+.currency {
+    cursor: pointer;
+    color: #58a6ff;
+}
+
+.currency:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+td, th {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 2px solid #333;
+    color: #ccc;
+    font-weight: 500;
+}
+
+tbody tr:hover {
+    background-color: #333333;
+}
+
+/* Alternate row color for better readability */
+tbody tr:nth-child(even) {
+    background-color: #2b2b2b;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #212121;
 }
