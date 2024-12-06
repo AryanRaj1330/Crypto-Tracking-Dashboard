@@ -2,13 +2,13 @@
     margin:0;
     font-family:arial;
     border:border-box;
-    color:white;
 }
 
 #navbar{
     background-color:#1a1d1de1;
     height:60px;
     display:flex;
+    color:white;
 }
 
 #logo{
@@ -59,7 +59,26 @@
     cursor:pointer;
     border:none;
     width:120px;
+    color:white;
 }
 #navButton:hover{
     background-color:blue;
+}
+
+#heading{
+    margin-top:30px;
+    margin-left:150px;
+    height:80px;
+    border:solid;
+}
+
+#parentTable{
+    display:flex;
+    justify-content:center;
+}
+#table{
+    border:solid;
+    height:500px;
+    width:80%;
+    display:flex;
 }
