@@ -1,4 +1,3 @@
-/* Reset some default styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,13 +5,12 @@
     font-family: Arial, sans-serif;
 }
 
-/* Body Background */
 body {
     background-image:url("395434.jpg");
-    background-size:cover; /* Restoring original body background color */
+    background-size:cover; 
 }
 
-/* Navbar Styles */
+
 #navbar {
     background-color: #1a1d1de1;
     height: 60px;
@@ -66,17 +64,16 @@ body {
     background-color: #0b56b1;
 }
 
-/* Account and Logout Link Styles */
 #otherNav {
     display: flex;
-    align-items: center; /* Ensures items are aligned horizontally */
-    justify-content: space-evenly; /* Distributes space evenly between Account and Logout */
+    align-items: center;
+    justify-content: space-evenly;
     width: 200px;
-    margin-left: 20px; /* Adds a small margin to the left */
+    margin-left: 20px;
 }
 
 #account, #logout {
-    margin-right: 10px; /* Adds space between Account and Logout */
+    margin-right: 10px;
 }
 
 #account:hover{
@@ -94,10 +91,9 @@ body {
 }
 
 .nav:hover {
-    color: #2680ed; /* Change text color on hover */
+    color: #2680ed;
 }
 
-/* Table Styles */
 #heading {
     margin-top: 30px;
     margin-left: 150px;
@@ -107,8 +103,6 @@ body {
 
 #parentTable {
     display: flex;
-    justify-content: flex-start; /* Align table to the left */
-    margin-top: 30px;
 }
 
 #table {
