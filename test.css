@@ -106,7 +106,7 @@ body {
 }
 
 #table {
-    width: 50%; /* Ensures table takes up 50% of the screen width */
+    width: 50%;
     background-color: #1a1d1d;
     border-radius: 4px;
     overflow: hidden;
@@ -120,9 +120,8 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-thead#crypto {
+#crypto {
     background-color: #2b2b2b;
-    color: white;
     font-weight: bold;
     text-align: center;
 }
@@ -153,9 +152,9 @@ td, th {
     font-weight: 500;
 }
 
-tbody tr:hover {
+/* tbody tr:hover {
     background-color: #333333;
-}
+} */
 
 /* Alternate row color for better readability */
 tbody tr:nth-child(even) {
