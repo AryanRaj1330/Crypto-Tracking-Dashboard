@@ -1,0 +1,103 @@
+body{
+    background-image:url('https://png.pngtree.com/thumb_back/fh260/background/20230704/pngtree-3d-render-of-crypto-currency-and-nft-composition-image_3828737.jpg');
+    background-size:cover;
+    background-position:center;
+    font-family:Arial, sans-serif;
+    height:100vh;
+    margin:0;
+}
+
+#google{
+    text-align:center;
+    border:none;
+    height:35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:rgb(72, 72, 227);
+    border-radius:5px;
+    margin-top:10px;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+#google:hover{
+    background-color: #035ebf;
+}
+#metaMask{
+    text-align:center;
+    border:none;
+    height:35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:orange;
+    border-radius:5px;
+    margin-top:10px;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+#metaMask:hover{
+    background-color:rgb(201, 136, 17);
+}
+
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+form{
+    background-color:rgba(255, 255, 255, 0.8);
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1,h2{
+    text-align:center;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+}
+
+input{
+    width:96%;
+    padding:10px;
+    margin-bottom:20px;
+    border:1px solid #ddd;
+    border-radius:5px;
+}
+
+button{
+    background-color:#4CAF50;
+    color:white;
+    padding:10px 20px;
+    border:none;
+    border-radius:5px;
+    width:100%;
+    cursor:pointer;
+}
+
+#login{
+    margin-bottom:10px;
+}
+
+button:hover{
+    background-color:#45a049;
+}
+
+a{
+    text-decoration:none;
+    color:#007bff;
+}
+
+a:hover{
+    text-decoration:underline;
+}

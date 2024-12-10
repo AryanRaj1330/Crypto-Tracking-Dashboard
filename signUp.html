@@ -4,100 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-Up</title>
-    <style>
-        /* Set background image */
-        body {
-            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230704/pngtree-3d-render-of-crypto-currency-and-nft-composition-image_3828737.jpg');
-            background-size: cover;
-            background-position: center;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        h1 {
-            color: #fff;
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            color: #fff;
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-        #already{
-            text-decoration:none;
-        }
-        form {
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-            padding: 20px;
-            border-radius: 8px;
-            width: 500px;
-            /*max-width: 400px;*/
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        form div {
-            margin-bottom: 15px;
-        }
-        #google{
-            background-color:#007bff;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            border-radius:4px;
-            height:38px;
-            margin-top:10px;
-            color:white;
-            font-weight:700;
-
-        }
-        #google:hover{
-            background-color:#035ebf;
-        }
-        label {
-            color: #333;
-            font-size: 1rem;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input {
-            width: 96%;
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #0056b3;
-        }
-
-        button {
-            margin-top:10px;
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            font-size: 1rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <link rel="stylesheet" href="signUp.css">
 </head>
 <body>
     <div>
@@ -118,9 +25,8 @@
             </div>
             <a href="signIn.html" id="already">Already have an Account?</a>
             <button type="submit">Sign-Up</button>
-            <div id="google">
-                Google
-            </div>
+            <button id="metaMask">MetaMask</button>
+            <button id="google">Google</button>
         </form>
     </div>
 </body>

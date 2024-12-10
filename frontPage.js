@@ -18,7 +18,10 @@ async function fetchPriceUSD(){
                 let price=document.getElementById(`${code}`)
                 price.textContent=data.rate.toFixed(2) 
             })
-            .catch(error=> console.error(error));
+            .catch(error=>{
+              let usdError=document.getElementById(`${code}`)
+              usdError.textContent="Error"
+            });
     }
 }
 
@@ -44,7 +47,10 @@ async function fetchPriceINR(){
                 let price=document.getElementById(`${code}inr`)
                 price.textContent=data.rate.toFixed(2) 
             })
-            .catch(error=> console.error(error));
+            .catch(error=>{
+              let inrError=document.getElementById(`${code}inr`)
+              inrError.textContent="Error"
+            });
     }
 }
 
@@ -80,7 +86,10 @@ async function fetchChange(){
                 }
                 delta.textContent=data.delta.day.toFixed(2) 
             })
-            .catch(error=> console.error(error));
+            .catch(error=>{
+              let changeError=document.getElementById(`${code}delta`)
+              changeError.textContent="Error"
+            });
     }
 }
 
@@ -107,8 +116,42 @@ async function fetchCap(){
                 let cap=data.cap.toFixed(2)
                 capShow.textContent=cap
             })
-            .catch(error=> console.error(error));
+            .catch(error=>{
+              let capError=document.getElementById(`${code}cap`)
+              capError.textContent="Error"
+            });
     }
 }
 
 fetchCap()
+
+async function fetchVolume(){
+  let coins=["BTC","ETH","XRP","ADA","XLM","LTC","NEO","DOT","TRX","LINK"]
+
+  for(let code of coins){
+      await fetch(new Request("https://api.livecoinwatch.com/coins/single"), {
+          method:"POST",
+          headers: new Headers({
+            "content-type":"application/json",
+            "x-api-key":"cb9a09fe-f9f3-40b7-9c38-4883cf04ecf3",
+          }),
+          body:JSON.stringify({
+            currency:"USD",
+            code:code,
+            meta:false,
+          }),
+        }).then(response=> response.json())
+          .then(data=>{
+            console.log(data.volume)
+              let volume=data.volume
+              let volumeShow=document.getElementById(`${code}volume`)
+              volumeShow.textContent=volume
+          })
+          .catch(error=>{
+            let errorVolume=document.getElementById(`${code}volume`)
+            error.textContent="Error"
+          });
+  }
+}
+
+fetchVolume()
