@@ -149,7 +149,7 @@ async function fetchVolume(){
           })
           .catch(error=>{
             let errorVolume=document.getElementById(`${code}volume`)
-            error.textContent="Error"
+            errorVolume.textContent="Error"
           });
   }
 }
