@@ -1,0 +1,92 @@
+*{
+    padding:0;
+}
+
+#web{
+    cursor:pointer;
+}
+#web:hover{
+    color:blue;
+    text-decoration: underline;
+}
+body{
+    background-image:url("bgImgRipple.jpg");
+    background-size:cover;
+}
+
+h1{
+    font-family:Arial, Helvetica, sans-serif;
+    margin-left:150px;
+    margin-top:50px;
+    font-size:60px;
+    color:white;
+}
+
+#ripple{
+    height:300px;
+    margin-left:150px;
+}
+
+#photoAndDiv{
+    display:flex;
+}
+#about{
+    padding:20px;
+    border-radius:5px;
+    background-color:rgba(255,255,255,0.5);
+    margin-left:70px;
+    font-size:19px;
+    height:300px;
+    width:850px;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align:left;
+}
+
+#current-details{
+    height:500px;
+    width:1320px;
+    margin-left:118px;
+    margin-top:85px;
+    display: flex;
+    justify-content: center;
+}
+
+#currency-details{
+    border-radius:5px;
+    margin-top:25px;
+    height:380px;
+    width:96%;
+    overflow:hidden;
+}
+
+td,th{
+    border-bottom:2px solid #333;
+    padding:10px;
+}
+
+thead th{
+    height:30px;
+    text-align: left;
+}
+
+#table{
+    border-radius:5px;
+    color:#ccc;
+    font-family:Arial, Helvetica, sans-serif;
+    width:100%;
+    height:100%;
+    border-spacing:0;
+}
+
+thead{
+    background-color:#2b2b2b;
+}
+
+tbody tr:nth-child(even){
+    background-color:#2b2b2b;
+}
+
+tbody tr:nth-child(odd){
+    background-color:#212121;
+}
