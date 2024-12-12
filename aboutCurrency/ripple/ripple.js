@@ -9,8 +9,6 @@ async function fetchData(){
             body:JSON.stringify({
                 currency:"USD",
                 code:"XRP",
-                sort:"rank",
-                order:"ascending",
                 offset:0,
                 limit:1,
                 meta:false

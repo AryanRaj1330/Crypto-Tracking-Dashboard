@@ -12,8 +12,6 @@ async function fetchCurrencyData(){
               body:JSON.stringify({
                   currency:"USD",
                   code:coin,
-                  sort:"rank",
-                  order:"ascending",
                   offset:0,
                   limit:10,
                   meta:false
@@ -23,7 +21,7 @@ async function fetchCurrencyData(){
           let data= await response.json()
 
           let priceUSD=document.getElementById(coin)
-          priceUSD.textContent=data.rate.toFixed(2)
+          priceUSD.textContent=`$${data.rate.toFixed(2)}`
 
           let cap=document.getElementById(`${coin}cap`)
           cap.textContent=data.cap
@@ -68,8 +66,6 @@ async function fetchPriceInr(){
               body:JSON.stringify({
                   currency:"INR",
                   code:coin,
-                  sort:"rank",
-                  order:"ascending",
                   offset:0,
                   limit:10,
                   meta:false
@@ -79,7 +75,7 @@ async function fetchPriceInr(){
           let dataInr= await responseInr.json()
       
           let priceINR=document.getElementById(`${coin}inr`)
-          priceINR.textContent=dataInr.rate.toFixed(2)
+          priceINR.textContent=`₹${dataInr.rate.toFixed(2)}`
       }
 
       catch(error){

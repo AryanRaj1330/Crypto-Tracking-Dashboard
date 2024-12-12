@@ -22,6 +22,11 @@ h1{
     color:white;
 }
 
+#icon{
+    height: 16px;
+    width:16px;
+}
+
 #polka{
     height:300px;
     margin-left:150px;

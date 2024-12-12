@@ -1,0 +1,235 @@
+async function fetchData(){
+    try{
+        let response= await fetch(("https://api.livecoinwatch.com/coins/single"),{
+            method:"POST",
+            headers:({
+                "content-type":"application/json",
+                "x-api-key":"cb9a09fe-f9f3-40b7-9c38-4883cf04ecf3"
+            }),
+            body:JSON.stringify({
+                currency:"USD",
+                code:"BTC",
+                offset:0,
+                limit:1,
+                meta:true
+            })
+        })
+
+        let data= await response.json()
+
+        document.getElementById("price").textContent=`$${data.rate}`
+
+        document.getElementById("price-inverted").textContent=1/data.rate
+
+        document.getElementById("volume").textContent=data.volume
+
+        document.getElementById("cap").textContent=data.cap
+
+        document.getElementById("number").textContent=data.circulatingSupply
+
+        document.getElementById("max").textContent=`$${data.allTimeHighUSD}`
+
+        document.getElementById("rank").textContent=`#${data.rank}`
+
+        document.getElementById("age").textContent=data.age
+
+        document.getElementById("liq").textContent=data.liquidity
+
+        let times=["hour","day","week","month","quarter","year"]
+
+        for(let now of times){
+            let abhi=document.getElementById(now)
+            let change=data.delta[now]
+
+            if(change<1){
+                abhi.style.color='red'
+            }
+            else if(change>=1){
+                abhi.style.color='green'
+            }
+            abhi.textContent=change
+        }
+
+
+    }
+    catch(error){
+        console.log(error)
+
+        document.getElementById("price").textContent="Error"
+
+        document.getElementById("price-inverted").textContent="Error"
+
+        document.getElementById("volume").textContent="Error"
+
+        document.getElementById("cap").textContent="Error"
+
+        document.getElementById("hour").textContent="Error"
+
+        document.getElementById("day").textContent="Error"
+
+        document.getElementById("week").textContent="Error"
+
+        document.getElementById("month").textContent="Error"
+
+        document.getElementById("number").textContent="Error"
+
+        document.getElementById("max").textContent="Error"
+
+        document.getElementById("rank").textContent="Error"
+
+        document.getElementById("age").textContent="Error"
+
+        document.getElementById("quarter").textContent="Error"
+
+        document.getElementById("year").textContent="Error"
+    }
+}
+
+fetchData()
+
+// previous code which is now being updated
+
+async function fetchData(){
+    try{
+        let response= await fetch(("https://api.livecoinwatch.com/coins/single"),{
+            method:"POST",
+            headers:({
+                "content-type":"application/json",
+                "x-api-key":"cb9a09fe-f9f3-40b7-9c38-4883cf04ecf3"
+            }),
+            body:JSON.stringify({
+                currency:"USD",
+                code:"BTC",
+                offset:0,
+                limit:1,
+                meta:true
+            })
+        })
+
+        let data= await response.json()
+
+        document.getElementById("price").textContent=`$${data.rate}`
+
+        document.getElementById("price-inverted").textContent=1/data.rate
+
+        document.getElementById("volume").textContent=data.volume
+
+        document.getElementById("cap").textContent=data.cap
+
+        document.getElementById("number").textContent=data.circulatingSupply
+
+        document.getElementById("max").textContent=`$${data.allTimeHighUSD}`
+
+        document.getElementById("rank").textContent=`#${data.rank}`
+
+        document.getElementById("age").textContent=data.age
+
+        document.getElementById("liq").textContent=data.liquidity
+
+        let hrs=document.getElementById("hour")
+        let hrsChange=data.delta.hour
+
+        if(hrsChange<1){
+            hrs.style.color='red'
+        }
+        else if(hrsChange>=1){
+            hrs.style.color='green'
+        }
+
+        hrs.textContent=hrsChange
+
+        let day=document.getElementById("day")
+        let dayChange=data.delta.day
+
+        if(dayChange<1){
+            day.style.color='red'
+        }
+        else if(hrsChange>=1){
+            day.style.color='green'
+        }
+
+        day.textContent=dayChange
+
+        let week=document.getElementById("week")
+        let weekChange=data.delta.week
+
+        if(weekChange<1){
+            week.style.color='red'
+        }
+        else if(weekChange>=1){
+            week.style.color='green'
+        }
+
+        week.textContent=weekChange
+
+        let month=document.getElementById("month")
+        let monthChange=data.delta.month
+
+        if(monthChange<1){
+            month.style.color='red'
+        }
+        else if(monthChange>=1){
+            month.style.color='green'
+        }
+
+        month.textContent=monthChange
+
+        let quarter=document.getElementById("quarter")
+        let quarterChange=data.delta.quarter
+
+        if(quarterChange<1){
+            quarter.style.color='red'
+        }
+        else if(quarterChange>=1){
+            quarter.style.color='green'
+        }
+
+        quarter.textContent=quarterChange
+
+        let year=document.getElementById("year")
+        let yearChange=data.delta.year
+
+        if(yearChange<1){
+            year.style.color='red'
+        }
+        else if(yearChange>=1){
+            year.style.color='green'
+        }
+
+        year.textContent=yearChange
+    }
+    catch(error){
+        console.log(error)
+
+        document.getElementById("price").textContent="Error"
+
+        document.getElementById("price-inverted").textContent="Error"
+
+        document.getElementById("volume").textContent="Error"
+
+        document.getElementById("cap").textContent="Error"
+
+        document.getElementById("hrs").textContent="Error"
+
+        document.getElementById("day").textContent="Error"
+
+        document.getElementById("week").textContent="Error"
+
+        document.getElementById("month").textContent="Error"
+
+        document.getElementById("number").textContent="Error"
+
+        document.getElementById("max").textContent="Error"
+
+        document.getElementById("rank").textContent="Error"
+
+        document.getElementById("age").textContent="Error"
+
+        document.getElementById("quarter").textContent="Error"
+
+        document.getElementById("year").textContent="Error"
+    }
+}
+
+fetchData()
+
