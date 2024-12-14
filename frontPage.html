@@ -124,9 +124,53 @@
                 </table>
             </div>
             <div id="convertor">
-                
+                <p id="name">ALL IN ONE CONVERTOR</p>
+                <div id="box">
+                    <label for="amount">Enter Amount</label><br>
+                    <input id="amount" type="number" placeholder="Amount">
+                    <div class="option" id="from">
+                        <p>From</p>
+                        <div class="select">
+                            <select name="from" class="select-currency">
+                                <option value="BTC">BTC</option>
+                                <option value="ETH">ETH</option>
+                                <option value="XRP">XRP</option>
+                                <option value="ADA">ADA</option>
+                                <option value="XLM">XLM</option>
+                                <option value="LTC">LTC</option>
+                                <option value="NEO">NEO</option>
+                                <option value="DOT">DOT</option>
+                                <option value="TRX">TRX</option>
+                                <option value="LINK">LINK</option>
+                            </select>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    <div class="option" id="to">
+                        <p>To</p>
+                        <div class="select">
+                            <select name="to" class="select-currency">
+                                <option value="BTC">BTC</option>
+                                <option value="ETH" selected>ETH</option>
+                                <option value="XRP">XRP</option>
+                                <option value="ADA">ADA</option>
+                                <option value="XLM">XLM</option>
+                                <option value="LTC">LTC</option>
+                                <option value="NEO">NEO</option>
+                                <option value="DOT">DOT</option>
+                                <option value="TRX">TRX</option>
+                                <option value="LINK">LINK</option>
+                            </select>
+                        </div>
+                    </div>
+                    Result
+                    <div id="ans">
+                        <p id="finalAns"></p>
+                    </div>
+                    <button id="result">Get Result</button>
+                </div>
             </div>
         </div>
-    <!-- <script src="frontPage.js"></script>     -->
+    <script src="frontPage.js"></script>    
 </body>
 </html>

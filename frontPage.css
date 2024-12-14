@@ -55,6 +55,7 @@ body{
     font-size:15px;
     border:none;
 }
+
 #navButton{
     display:flex;
     justify-content:center;
@@ -68,6 +69,7 @@ body{
     width:120px;
     color:white;
 }
+
 #navButton:hover{
     background-color:blue;
 }
@@ -83,12 +85,87 @@ body{
     display:flex;
 }
 
+
 #convertor{
+    text-align: center;
+    font-weight:600;
+    padding-top:15px;
+    font-size:20px;
+    color:#ccc;
     background-color:#2b2b2b;
     border-radius:8px;
-    height:300px;
-    width:500px;
+    height:480px;
+    width:450px;
     margin-left:58px;
+}
+
+#from{
+    margin-top:15px;
+}
+
+#name{
+    text-decoration: underline;
+}
+
+#to{
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+#box{
+    padding-left:15px;
+    padding-top:10px;
+    text-align:left;
+    height:400px;
+    width:400px;
+    margin-left:50px;
+    margin-top:22px;
+}
+
+i{
+    margin-top:15px;
+    color:white;
+}
+
+.select-currency{
+    width:70%;
+    height:40px;
+    font-size:15px;
+    padding:5px;
+    border-radius:4px;
+    box-sizing:border-box;
+}
+
+
+
+#amount{
+    font-size:15px;
+    padding-left:5px;
+    margin-top:2px;
+    height:40px;
+    width:300px;
+    border:none;
+    border-radius:4px;
+}
+
+#ans{
+    height:40px;
+    background-color: white;
+    width:300px;
+    margin-top:2px;
+    border-radius:4px;
+}
+
+#result{
+    border:none;
+    border-radius:4px;
+    height:40px;
+    width:50%;
+    margin-top:10px;
+    background-color:#4CAF50;
+    color:white;
+    font-size:18px;
+    font-weight: 550;
 }
 
 .icon{
@@ -123,6 +200,7 @@ body{
 #crypto th{
     font-weight:600;
 }
+
 .currency{
     cursor:pointer;
     color: #58a6ff;

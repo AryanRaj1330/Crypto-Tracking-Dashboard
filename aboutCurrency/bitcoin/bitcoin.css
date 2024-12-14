@@ -4,6 +4,8 @@
 
 #web{
     cursor:pointer;
+    color:#ccc;
+    text-decoration:none;
 }
 #web:hover{
     color:blue;

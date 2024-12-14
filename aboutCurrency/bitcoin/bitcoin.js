@@ -1,6 +1,6 @@
 async function fetchData(){
     try{
-        let response= await fetch(("https://api.livecoinwatch.com/coins/single"),{
+        let response= await fetch(new Request("https://api.livecoinwatch.com/coins/single"),{
             method:"POST",
             headers:({
                 "content-type":"application/json",

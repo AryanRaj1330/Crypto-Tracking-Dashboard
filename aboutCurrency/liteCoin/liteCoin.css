@@ -4,6 +4,8 @@
 
 #web{
     cursor:pointer;
+    color:#ccc;
+    text-decoration:none;
 }
 #web:hover{
     color:blue;
@@ -60,7 +62,7 @@ h1{
 #currency-details{
     border-radius:5px;
     margin-top:25px;
-    height:380px;
+    height:450px;
     width:96%;
     overflow:hidden;
 }
