@@ -1,0 +1,12 @@
+api key
+
+fca_live_ybX58T5qHc65LWKOzx2frs99Mrt5TAF1MbbvaLg3
+
+https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_ybX58T5qHc65LWKOzx2frs99Mrt5TAF1MbbvaLg3&currencies=EUR%2CUSD%2CCAD
+
+https://api.freecurrencyapi.com/v1/historical?apikey=fca_live_ybX58T5qHc65LWKOzx2frs99Mrt5TAF1MbbvaLg3&currencies=EUR%2CUSD%2CCAD&date_from=2024-12-12T18%3A28%3A53.685Z&date_to=2024-12-14T18%3A28%3A53.685Z
+
+
+let ans=await fetchPrice(from.value,to.value)
+    let finalAns=ans*amtValue
+    document.getElementById("finalAns").textContent=finalAns.toFixed(2)

@@ -56,6 +56,14 @@ body{
     border:none;
 }
 
+#search-icon{
+    height:35px;
+    display: flex;
+    align-items: center;
+    margin-bottom:7px;
+    margin-right:2px;
+}
+
 #navButton{
     display:flex;
     justify-content:center;
@@ -68,7 +76,9 @@ body{
     border:none;
     width:120px;
     color:white;
+    height:40px;
 }
+
 
 #navButton:hover{
     background-color:blue;

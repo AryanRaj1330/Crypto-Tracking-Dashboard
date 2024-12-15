@@ -1,28 +1,59 @@
-async function fetchData(){
-    try{
-        let response =await fetch(new Request("https://api.livecoinwatch.com/coins/single"),{
-            method:"POST",
-            headers:new Headers({
-                "content-type":"application/json",
-                "x-api-key":"cb9a09fe-f9f3-40b7-9c38-4883cf04ecf3"
-            }),
-            body:JSON.stringify({
-                currency:"INR",
-                code:"USD",
-                offest:0,
-                limit:1,
-                meta:false
-            })
-        })
+'use strict';
 
-        let data=await response.json()
+let array=["USD","INR"]
 
-        console.log(data.rate)
+class Freecurrencyapi {
+    baseUrl = 'https://api.freecurrencyapi.com/v1/';
+
+    constructor(apiKey = '') {
+        this.headers = {
+            apikey: apiKey
+        };
     }
 
-    catch(error){
-        console.log(`error-${error}`)
+    call(endpoint, params = {}) {
+        const paramString = new URLSearchParams({
+            ...params
+        }).toString();
+
+        return fetch(`${this.baseUrl}${endpoint}?${paramString}`, { headers: this.headers })
+            .then(response => response.json())
+            .then(data => {
+                return data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                throw error;
+            });
+    }
+
+    status() {
+        return this.call('status');
+    }
+
+    currencies(params) {
+        return this.call('currencies', params);
+    }
+
+    latest(params) {
+        return this.call('latest', params);
+    }
+
+    historical(params) {
+        return this.call('historical', params);
     }
 }
 
-fetchData()
+// Initialize the Freecurrencyapi class with your API key
+const apiKey = 'fca_live_ybX58T5qHc65LWKOzx2frs99Mrt5TAF1MbbvaLg3';
+const freeCurrencyApi = new Freecurrencyapi(apiKey);
+
+// Fetch the conversion rate from USD to INR
+freeCurrencyApi.latest({ base_currency: 'USD', currencies: 'INR' })
+    .then(data => {
+        const conversionRate = data.data.INR;
+        console.log(`Conversion Rate (USD to INR): ${conversionRate}`);
+    })
+    .catch(error => {
+        console.error('Failed to fetch conversion rate:', error);
+    });

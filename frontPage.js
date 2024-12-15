@@ -90,8 +90,40 @@ fetchPriceInr()
 
 // All in one currency convertor
 
+function isSubSet(array,code){
+    let length=array.length
+    for(let i=0;i<length;i++){
+        if(array[i]===code){
+            return true
+        }
+    }
+    return false
+}
+
+
 
 let currencyCode=["BTC","ETH","XRP","ADA","XLM","LTC","NEO","DOT","TRX","LINK"]
+
+let baseURL="https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/"
+
+
+let countryCurrencies = [
+    "AED", "AFN", "XCD", "ALL", "AMD", "ANG", "AOA", "AQD", "ARS", "AUD", "AZN", 
+    "BAM", "BBD", "BDT", "XOF", "BGN", "BHD", "BIF", "BMD", "BND", "BO", "BRL", 
+    "BSD", "NOK", "BWP", "BYR", "BZD", "CAD", "CDF", "XAF", "CHF", "CLP", "CNY", 
+    "COP", "CRC", "CUP", "CVE", "CYP", "CZK", "DJF", "DKK", "DOP", "DZD", "ECS", 
+    "EEK", "EGP", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GGP", "GHS", "GIP", 
+    "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", 
+    "INR", "IQD", "IRR", "ISK", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", 
+    "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LTL", 
+    "LVL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRO", "MTL", 
+    "MUR", "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "XPF", "NGN", "NIO", "NPR", 
+    "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", 
+    "RSD", "RUB", "RWF", "RW", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SKK", 
+    "SLL", "SOS", "SRD", "STD", "SVC", "SYP", "SY", "SZL", "THB", "TJS", "TMT", 
+    "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UA", "UGX", "USD", "UY", "UZ", 
+    "VE", "VND", "VU", "YER", "ZA", "ZM", "ZW"
+  ]
 
 let from=document.querySelector("#from select")
 let to=document.querySelector("#to select")
@@ -124,10 +156,21 @@ async function fetchPrice(from,to){
 }
 
 
+
+
 let selectOption=document.querySelectorAll("select")
 
 for(let select of selectOption){
     for(let code of currencyCode){
+        let newOption=document.createElement("option")
+        newOption.innerText=code
+        newOption.value=code
+        select.appendChild(newOption)
+    }
+}
+
+for(let select of selectOption){
+    for(let code of countryCurrencies){
         let newOption=document.createElement("option")
         newOption.innerText=code
         newOption.value=code
@@ -145,9 +188,27 @@ button.addEventListener("click",async(event)=>{
         amtValue=0
         amount.value="0"
     }
-    let ans=await fetchPrice(from.value,to.value)
-    let finalAns=ans*amtValue
-    document.getElementById("finalAns").textContent=finalAns.toFixed(2)
+    if(isSubSet(currencyCode,from.value)&&isSubSet(currencyCode,to.value)){
+        let ans=await fetchPrice(from.value,to.value)
+        let finalAns=ans*amtValue
+        document.getElementById("finalAns").textContent=finalAns.toFixed(2)
+    }
+    else{
+
+        const apiKey = 'fca_live_ybX58T5qHc65LWKOzx2frs99Mrt5TAF1MbbvaLg3';
+        const url = `https://free.currconv.com/api/v7/convert?q=${from.value}_${to.value}&compact=ultra&apiKey=${apiKey}`;
+    
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                const conversionRate = data[`${from.value}_${to.value}`];
+                const amount = document.getElementById('amount').value;
+                const result = conversionRate * amount;
+                document.getElementById('finalAns').textContent = result.toFixed(2);
+            })
+            .catch(error => console.error('Error:', error));
+    
+    }
 })
 
 
