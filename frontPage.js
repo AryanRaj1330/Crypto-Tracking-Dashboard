@@ -79,7 +79,7 @@ async function fetchPriceInr(){
       }
 
       catch(error){
-        console.log(error)
+        console.log(`error-${error}`)
 
           priceINR.textContent="Error"
       }
@@ -87,3 +87,68 @@ async function fetchPriceInr(){
 }
 
 fetchPriceInr()
+
+// All in one currency convertor
+
+
+let currencyCode=["BTC","ETH","XRP","ADA","XLM","LTC","NEO","DOT","TRX","LINK"]
+
+let from=document.querySelector("#from select")
+let to=document.querySelector("#to select")
+
+async function fetchPrice(from,to){
+    try{
+        let response=await fetch(new Request("https://api.livecoinwatch.com/coins/single"),{
+            method:"POST",
+            headers:new Headers({
+                "content-type":"application/json",
+                "x-api-key":"cb9a09fe-f9f3-40b7-9c38-4883cf04ecf3"
+            }),
+            body:JSON.stringify({
+                currency:to,
+                code:from,
+                offset:0,
+                limit:1,
+                meta:false
+            })
+        })
+
+        let data= await response.json()
+
+        return data.rate
+    }
+
+    catch(error){
+        console.log(`error-${error}`)
+    }
+}
+
+
+let selectOption=document.querySelectorAll("select")
+
+for(let select of selectOption){
+    for(let code of currencyCode){
+        let newOption=document.createElement("option")
+        newOption.innerText=code
+        newOption.value=code
+        select.appendChild(newOption)
+    }
+}
+
+let button=document.getElementById("result")
+
+button.addEventListener("click",async(event)=>{
+    event.preventDefault()
+    let amount=document.getElementById("amount")
+    let amtValue=amount.value;
+    if(amtValue===""||amtValue<0){
+        amtValue=0
+        amount.value="0"
+    }
+    let ans=await fetchPrice(from.value,to.value)
+    let finalAns=ans*amtValue
+    document.getElementById("finalAns").textContent=finalAns.toFixed(2)
+})
+
+
+

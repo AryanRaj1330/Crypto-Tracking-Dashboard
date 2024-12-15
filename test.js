@@ -7,8 +7,8 @@ async function fetchData(){
                 "x-api-key":"cb9a09fe-f9f3-40b7-9c38-4883cf04ecf3"
             }),
             body:JSON.stringify({
-                currency:"ETH",
-                code:"BTC",
+                currency:"INR",
+                code:"USD",
                 offest:0,
                 limit:1,
                 meta:false
