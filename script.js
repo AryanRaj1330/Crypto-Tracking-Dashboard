@@ -1,59 +1,29 @@
-'use strict';
-
-class Freecurrencyapi {
-    baseUrl = 'https://api.freecurrencyapi.com/v1/';
-
-    constructor(apiKey = '') {
-        this.headers = {
-            apikey: apiKey
-        };
+async function convertEurToInr() {
+    try {
+      let baseURL = `https://api.coingecko.com/api/v3/simple/price?ids=eur&vs_currencies=usd`;
+  
+      let response = await fetch(baseURL, {
+        method: 'GET',
+        headers: new Headers({
+          'accept': 'application/json',
+          "x-api-key":"cb9a09fe-f9f3-40b7-9c38-4883cf04ecf3"
+        })
+      });
+  
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+  
+      let data = await response.json();
+      console.log(data);
+      
+      let rate = data.eur.usd; // Retrieve the rate for EUR to INR
+      console.log(`1 EUR = ${rate} INR`);
+      
+    } catch (error) {
+      console.log(`Error: ${error}`);
     }
-
-    async call(endpoint, params = {}) {
-        const paramString = new URLSearchParams(params).toString();
-        try {
-            const response = await fetch(`${this.baseUrl}${endpoint}?${paramString}`, {
-                headers: this.headers
-            });
-            return await response.json();
-        } catch (error) {
-            console.error('Error:', error);
-            throw error;
-        }
-    }
-
-    latest(params) {
-        return this.call('latest', params);
-    }
-}
-
-// Initialize the Freecurrencyapi class with your API key
-const apiKey = 'fca_live_ybX58T5qHc65LWKOzx2frs99Mrt5TAF1MbbvaLg3';
-const freeCurrencyApi = new Freecurrencyapi(apiKey);
-
-async function fetchCurrencyData() {
-    const currencies = ["USD", "EUR", "GBP", "INR", "JPY"]; // Add your desired currencies
-    const baseCurrency = "USD";
-
-    for (let currency of currencies) {
-        try {
-            // Fetch the latest conversion rate
-            const data = await freeCurrencyApi.latest({ base_currency: baseCurrency, currencies: currency });
-
-            // Update the DOM with the fetched data
-            const rate = data.data[currency];
-            if (!rate) throw new Error(`No rate found for ${currency}`);
-
-            let currencyRate = document.getElementById(currency);
-            currencyRate.textContent = `${baseCurrency} to ${currency}: ${rate.toFixed(2)}`;
-        } catch (error) {
-            console.error(`Error fetching data for ${currency}:`, error);
-
-            let currencyRate = document.getElementById(currency);
-            currencyRate.textContent = "Error fetching data";
-        }
-    }
-}
-
-// Call the function to fetch and display the data
-fetchCurrencyData();
+  }
+  
+  convertEurToInr();
+  

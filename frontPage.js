@@ -94,17 +94,16 @@ function isSubSet(array,code){
     let length=array.length
     for(let i=0;i<length;i++){
         if(array[i]===code){
-            return true
+            return false
         }
     }
-    return false
+    return true
 }
 
 
 
 let currencyCode=["BTC","ETH","XRP","ADA","XLM","LTC","NEO","DOT","TRX","LINK"]
 
-let baseURL="https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/"
 
 
 let countryCurrencies = [
@@ -189,25 +188,38 @@ button.addEventListener("click",async(event)=>{
         amount.value="0"
     }
     if(isSubSet(currencyCode,from.value)&&isSubSet(currencyCode,to.value)){
+        try{
+            let baseURL=`https://api.coingecko.com/api/v3/simple/price?ids=${from.value.toLowerCase()}&vs_currencies=${to.value.toLowerCase()}`
+
+            let response= await fetch(new Request(baseURL),{
+                method:"GET",
+                headers:new Headers({
+                    "accept":"application/json",
+                    "x-cg-demo-api-key":"CG-89eAtZqtbTUwJ9wpYh9zmNMy"
+                })
+            })
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            
+            let data= await response.json()
+
+            let rate=data[from.value.toLowerCase()][to.value.toLowerCase()]
+            let total=rate*amtValue
+
+            console.log(total.toFixed(2))
+
+            document.getElementById("finalAns").textContent=total.toFixed(2)
+        }
+        catch(error){
+            console.log(`error=${error}`)
+        }
+    }
+    else{
         let ans=await fetchPrice(from.value,to.value)
         let finalAns=ans*amtValue
         document.getElementById("finalAns").textContent=finalAns.toFixed(2)
-    }
-    else{
-
-        const apiKey = 'fca_live_ybX58T5qHc65LWKOzx2frs99Mrt5TAF1MbbvaLg3';
-        const url = `https://free.currconv.com/api/v7/convert?q=${from.value}_${to.value}&compact=ultra&apiKey=${apiKey}`;
-    
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                const conversionRate = data[`${from.value}_${to.value}`];
-                const amount = document.getElementById('amount').value;
-                const result = conversionRate * amount;
-                document.getElementById('finalAns').textContent = result.toFixed(2);
-            })
-            .catch(error => console.error('Error:', error));
-    
     }
 })
 
