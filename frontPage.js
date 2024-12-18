@@ -127,6 +127,9 @@ let countryCurrencies = [
 let from=document.querySelector("#from select")
 let to=document.querySelector("#to select")
 
+
+
+
 async function fetchPrice(from,to){
     try{
         let response=await fetch(new Request("https://api.livecoinwatch.com/coins/single"),{
@@ -153,7 +156,6 @@ async function fetchPrice(from,to){
         console.log(`error-${error}`)
     }
 }
-
 
 
 
@@ -187,34 +189,30 @@ button.addEventListener("click",async(event)=>{
         amtValue=0
         amount.value="0"
     }
+
     if(isSubSet(currencyCode,from.value)&&isSubSet(currencyCode,to.value)){
-        try{
-            let baseURL=`https://api.coingecko.com/api/v3/simple/price?ids=${from.value.toLowerCase()}&vs_currencies=${to.value.toLowerCase()}`
+        async function fetchFiat(){
+            try{
+                let response =await fetch(new Request(`https://v6.exchangerate-api.com/v6/471272ad8bae7a9de90e86ad/pair/${from.value}/${to.value}`))
 
-            let response= await fetch(new Request(baseURL),{
-                method:"GET",
-                headers:new Headers({
-                    "accept":"application/json",
-                    "x-cg-demo-api-key":"CG-89eAtZqtbTUwJ9wpYh9zmNMy"
-                })
-            })
+                let data= await response.json()
 
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
+                let ex=data.conversion_rate
+                let ans=ex*amtValue
+
+                document.getElementById("finalAns").textContent=ans.toFixed(2)
             }
-            
-            let data= await response.json()
-
-            let rate=data[from.value.toLowerCase()][to.value.toLowerCase()]
-            let total=rate*amtValue
-
-            console.log(total.toFixed(2))
-
-            document.getElementById("finalAns").textContent=total.toFixed(2)
+            catch(error){
+                console.log(`error=${error}`)
+            }
         }
-        catch(error){
-            console.log(`error=${error}`)
-        }
+        fetchFiat()
+    }
+    else if(isSubSet(currencyCode,from.value)&&!isSubSet(currencyCode,to.value)){
+        console.log("condition is correct")
+        let ans=await fetchPrice(to.value,from.value)
+        let finalAns=(1/ans)*amtValue
+        document.getElementById("finalAns").textContent=finalAns.toFixed(2)
     }
     else{
         let ans=await fetchPrice(from.value,to.value)
