@@ -16,7 +16,7 @@ async function fetchData(){
         })
 
         let data= await response.json()
-
+        
         document.getElementById("price").textContent=`$${data.rate}`
 
         document.getElementById("price-inverted").textContent=1/data.rate
@@ -42,10 +42,10 @@ async function fetchData(){
             let change=data.delta[now]
 
             if(change<1){
-                abhi.style.color='red'
+                abhi.style.color="red"
             }
             else if(change>=1){
-                abhi.style.color='green'
+                abhi.style.color="green"
             }
             abhi.textContent=change
         }

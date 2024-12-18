@@ -32,10 +32,10 @@ async function fetchCurrencyData(){
           let delta=document.getElementById(`${coin}delta`)
           let change=data.delta.day
           if(change<1){
-              delta.style.color='red'
+              delta.style.color="red"
           }
           else if(change>=1){
-              delta.style.color='green'
+              delta.style.color="green"
           }
           delta.textContent=change
       }
@@ -220,6 +220,44 @@ button.addEventListener("click",async(event)=>{
         document.getElementById("finalAns").textContent=finalAns.toFixed(2)
     }
 })
+
+// search button activation
+
+let srchBtn=document.querySelector("#navButton")
+
+
+function search(){
+    let srchText=document.getElementById("searchNAV").value.toLowerCase()
+
+    let pages={
+        "bitcoin":"aboutCurrency/bitcoin/bitcoin.html",
+        "ethereum":"aboutCurrency/ethereum/ethereum.html",
+        "ripple":"aboutCurrency/ripple/ripple.html",
+        "cardano":"aboutCurrency/cardano/cardano.html",
+        "stellar":"aboutCurrency/stellar/stellar.html",
+        "litecoin":"aboutCurrency/litecoin/litecoin.html",
+        "neo":"aboutCurrency/neo/neo.html",
+        "polkadot":"aboutCurrency/polka/polka.html",
+        "tron":"aboutCurrency/tron/tron.html",
+        "chainlink":"aboutCurrency/link/link.html"
+    }
+
+    if(pages[srchText]){
+        window.location.href=pages[srchText]
+    }
+    else{
+        alert("The crytpo currency entered is not in the data base, Sorry")
+    }
+}
+
+srchBtn.addEventListener("click",()=> search()) 
+srchBtn.addEventListener("keydown",(evt)=>{  // enter search not working, fix later
+    if(evt.key==="Enter"){
+        search()
+    }
+})
+
+
 
 
 
