@@ -239,7 +239,17 @@ function search(){
         "neo":"aboutCurrency/neo/neo.html",
         "polkadot":"aboutCurrency/polka/polka.html",
         "tron":"aboutCurrency/tron/tron.html",
-        "chainlink":"aboutCurrency/link/link.html"
+        "chainlink":"aboutCurrency/link/link.html",
+        "btc":"aboutCurrency/bitcoin/bitcoin.html",
+        "eth":"aboutCurrency/ethereum/ethereum.html",
+        "xrp":"aboutCurrency/ripple/ripple.html",
+        "ada":"aboutCurrency/cardano/cardano.html",
+        "xlm":"aboutCurrency/stellar/stellar.html",
+        "ltc":"aboutCurrency/litecoin/litecoin.html",
+        "neo":"aboutCurrency/neo/neo.html",
+        "dot":"aboutCurrency/polka/polka.html",
+        "trx":"aboutCurrency/tron/tron.html",
+        "link":"aboutCurrency/link/link.html"
     }
 
     if(pages[srchText]){
