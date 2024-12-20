@@ -1,5 +1,5 @@
 async function fetchCurrencyData(){
-  let currency=["BTC","ETH","XRP","ADA","XLM","LTC","NEO","DOT","TRX","LINK"]
+  let currency=["BTC","ETH","BNB","XRP","ADA","XLM","LTC","NEO","DOT","TRX","LINK"]
 
   for(let coin of currency){
       try{
@@ -53,7 +53,7 @@ async function fetchCurrencyData(){
 fetchCurrencyData()
 
 async function fetchPriceInr(){
-  let currency=["BTC","ETH","XRP","ADA","XLM","LTC","NEO","DOT","TRX","LINK"]
+  let currency=["BTC","ETH","BNB","XRP","ADA","XLM","LTC","NEO","DOT","TRX","LINK"]
 
   for(let coin of currency){
       try{
@@ -102,7 +102,7 @@ function isSubSet(array,code){
 
 
 
-let currencyCode=["BTC","ETH","XRP","ADA","XLM","LTC","NEO","DOT","TRX","LINK"]
+let currencyCode=["BTC","ETH","BNB","XRP","ADA","XLM","LTC","NEO","DOT","TRX","LINK"]
 
 
 
@@ -232,6 +232,7 @@ function search(){
     let pages={
         "bitcoin":"aboutCurrency/bitcoin/bitcoin.html",
         "ethereum":"aboutCurrency/ethereum/ethereum.html",
+        "binance":"aboutCurrency/binance/binance.html",
         "ripple":"aboutCurrency/ripple/ripple.html",
         "cardano":"aboutCurrency/cardano/cardano.html",
         "stellar":"aboutCurrency/stellar/stellar.html",
@@ -242,6 +243,7 @@ function search(){
         "chainlink":"aboutCurrency/link/link.html",
         "btc":"aboutCurrency/bitcoin/bitcoin.html",
         "eth":"aboutCurrency/ethereum/ethereum.html",
+        "bnb":"aboutCurrency/binance/binance.html",
         "xrp":"aboutCurrency/ripple/ripple.html",
         "ada":"aboutCurrency/cardano/cardano.html",
         "xlm":"aboutCurrency/stellar/stellar.html",
