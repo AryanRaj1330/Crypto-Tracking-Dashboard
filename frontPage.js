@@ -253,7 +253,7 @@ function search(){
     }
 
     if(pages[srchText]){
-        window.location.href=pages[srchText]
+        window.open(pages[srchText],"_blank")
     }
     else{
         alert("The crytpo currency entered is not in the data base, Sorry")
