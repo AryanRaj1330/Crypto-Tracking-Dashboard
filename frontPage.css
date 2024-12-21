@@ -15,11 +15,19 @@ body{
     background-image:url("395434.jpg");
     background-size: cover;
 }
+
+#dollar{
+    height:45px;
+    margin-bottom:5px;
+    margin-right:3px;
+}
+
 #logo{
+    font-size:22px;
+    font-weight: bolder;
     display:flex;
     justify-content: center;
     align-items:center;
-    background-color:blue;
     width:200px;
     height:45px;
     margin:7.5px;
