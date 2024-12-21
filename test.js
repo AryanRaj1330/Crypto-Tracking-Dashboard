@@ -18,6 +18,7 @@ async function fetchPrice(){
         let data=await response.json()
 
         console.log(data.rate)
+        console.log(data.rank)
     }
     catch(error){
         console.log(`error-${error}`)

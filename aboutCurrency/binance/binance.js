@@ -8,7 +8,7 @@ async function fetchData(){
             }),
             body:JSON.stringify({
                 currency:"USD",
-                code:"BTC",
+                code:"BNB",
                 offset:0,
                 limit:1,
                 meta:true
