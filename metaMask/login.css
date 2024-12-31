@@ -4,9 +4,12 @@
 }
 
 body{
-    background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230704/pngtree-3d-render-of-crypto-currency-and-nft-composition-image_3828737.jpg');
-    background-size:cover;
+    background-color: black;
+    /* background-image: url(fox.jpg); */
+    /* background-size:covera; */
     height:100vh;
+    display:flex;
+    align-items: center;
 }
 
 img{
@@ -23,19 +26,35 @@ img{
     width:600px;
     height:200px;
     margin-left:450px;
-    display:flex;
-    justify-content:center;
     margin-top:10px;
     background-color:rgba(255, 255, 255, 0.8);
 }
 
+#button{
+    height:75px;
+}
+
+#title{
+    margin-top:10px;
+}
+
+#not-message{
+    color:rgb(228, 65, 65);
+}
+
 button{
-    height:40px;
-    background-color:rgb(193, 43, 193);
+    height:50px;
+    background-color:orange;
     color:white;
-    font-size:15px;
+    font-size:19px;
     font-weight:600;
-    width:200px;
+    width:250px;
     border-radius:6px;
     border:none;
+    margin:20px;
+    cursor:pointer;
+}
+
+.hover:hover{
+    background-color:rgb(173, 19, 19);
 }
