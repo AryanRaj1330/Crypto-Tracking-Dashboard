@@ -4,7 +4,6 @@
     font-family:arial;
 }
 
-
 #navbar{
     background-color:#1a1d1de1;
     height:60px;
@@ -268,3 +267,14 @@ td{
     border-bottom:2px solid #333;
 }
 
+#footer{
+    margin-top:50px;
+    background-color:rgba(51,51,51,0.8);
+    height:200px;
+    color:white;
+    font-size:18px;
+    font-weight:550;
+    text-align: center;
+    padding-top:20px;
+    line-height: 30px;
+}
