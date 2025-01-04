@@ -22,7 +22,7 @@ let logOut=document.getElementById("log-out")
 logOut.addEventListener("click",()=>{
     signOut(auth)
     .then(()=>{
-        window.location.href="signIn.html"
+        window.location.href="index.html"
     })
     .catch((error)=>{
         console.log(`error=${error}`)
@@ -38,13 +38,13 @@ onAuthStateChanged(auth,(user)=>{
     }
     else{
         alert("no user found")
-        window.location.href="signIn.html"
+        window.location.href="index.html"
     }
 })
 
 window.addEventListener("popstate",()=>{
     if(!auth.currentUser){
-        window.location.href="signIn.html"
+        window.location.href="index.html"
     }
 })
 
