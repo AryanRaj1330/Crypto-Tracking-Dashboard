@@ -1,3 +1,53 @@
+//logout
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+
+console.log("working")
+
+import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBrZEWbChqoTE4BBOt9bHCJ5wdNR_K4yQw",
+    authDomain: "cryptospy-f5387.firebaseapp.com",
+    projectId: "cryptospy-f5387",
+    storageBucket: "cryptospy-f5387.firebasestorage.app",
+    messagingSenderId: "128055046170",
+    appId: "1:128055046170:web:10f8e1ba9e4d5ba159a1a3"
+}
+
+const app=initializeApp(firebaseConfig)
+const auth=getAuth()
+
+let logOut=document.getElementById("log-out")
+
+logOut.addEventListener("click",()=>{
+    signOut(auth)
+    .then(()=>{
+        window.location.href="signIn.html"
+    })
+    .catch((error)=>{
+        console.log(`error=${error}`)
+    })
+})
+
+// getting user data
+
+onAuthStateChanged(auth,(user)=>{
+    if(user){
+        const id=user.uid
+        console.log(`user=${id}`)
+    }
+    else{
+        alert("no user found")
+        window.location.href="signIn.html"
+    }
+})
+
+window.addEventListener("popstate",()=>{
+    if(!auth.currentUser){
+        window.location.href="signIn.html"
+    }
+})
+
 async function fetchCurrencyData(){
   let currency=["BTC","ETH","BNB","XRP","ADA","XLM","LTC","NEO","DOT","TRX","LINK"]
 

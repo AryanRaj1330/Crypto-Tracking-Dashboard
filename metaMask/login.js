@@ -28,6 +28,13 @@ function toggle(){
 async function loginMetaMask(){
     try{
     const account= await window.ethereum.request({method:"eth_requestAccounts"})
+    if(account.length>0){
+        const address=account[0]
+        console.log(`address: ${address}`)
+    }
+    else{
+        console.log("No account found")
+    }
     console.log("success")
     window.location.href="../index.html"
     }
