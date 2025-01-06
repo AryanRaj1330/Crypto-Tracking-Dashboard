@@ -63,6 +63,10 @@ body{
     border:none;
 }
 
+#account{
+    font-size:18px;
+}
+
 #search-icon{
     height:35px;
     display: flex;

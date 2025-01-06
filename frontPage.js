@@ -38,6 +38,7 @@ const Data= async()=>{
             const userName=user.displaName
             const userEmail=user.email
             const id=user.uid
+            document.getElementById("account").textContent=`User: ${userEmail}`
             alert(`email=${userEmail}`)
             console.log(`user=${id}`)
         }
@@ -48,7 +49,9 @@ const Data= async()=>{
     })
 }
 
-window.addEventListener("DOMContentLoaded",Data)
+window.addEventListener("DOMContentLoaded",()=>{
+    Data()
+})
 
 window.addEventListener("popstate",()=>{
     if(!auth.currentUser){
