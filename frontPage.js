@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebas
 
 console.log("working")
 
-import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { getAuth, signOut, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBrZEWbChqoTE4BBOt9bHCJ5wdNR_K4yQw",
@@ -16,6 +16,7 @@ const firebaseConfig = {
 
 const app=initializeApp(firebaseConfig)
 const auth=getAuth()
+const provider= new GoogleAuthProvider()
 
 let logOut=document.getElementById("log-out")
 
@@ -31,16 +32,23 @@ logOut.addEventListener("click",()=>{
 
 // getting user data
 
-onAuthStateChanged(auth,(user)=>{
-    if(user){
-        const id=user.uid
-        console.log(`user=${id}`)
-    }
-    else{
-        alert("no user found")
-        window.location.href="index.html"
-    }
-})
+const Data= async()=>{
+    onAuthStateChanged(auth,(user)=>{
+        if(user){
+            const userName=user.displaName
+            const userEmail=user.email
+            const id=user.uid
+            alert(`email=${userEmail}`)
+            console.log(`user=${id}`)
+        }
+        else{
+            alert("no user found")
+            window.location.href="index.html"
+        }
+    })
+}
+
+window.addEventListener("DOMContentLoaded",Data)
 
 window.addEventListener("popstate",()=>{
     if(!auth.currentUser){

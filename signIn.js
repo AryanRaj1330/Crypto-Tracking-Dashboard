@@ -1,8 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
-import { GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
-const provider= new GoogleAuthProvider()
 
 const firebaseConfig = {
   apiKey: "AIzaSyBrZEWbChqoTE4BBOt9bHCJ5wdNR_K4yQw",
@@ -15,7 +14,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
+const provider= new GoogleAuthProvider()
 
 let btn=document.getElementById("submit-button")
 
@@ -38,22 +37,18 @@ btn.addEventListener("click",(event)=>{
   });
 })
 
-let google=document.getElementById("google")
+let login=document.getElementById("google")
 
-google.addEventListener("click",()=>{
-    document.getElementById("email").removeAttribute("required")
-    document.getElementById("password").removeAttribute("required")
-    
-    signInWithPopup(auth, provider)
-  .then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const user = result.user;
-    console.log("success")
-    console.log(user)
+const userSignIn= async()=>{
+  signInWithPopup(auth,provider)
+  .then((result)=>{
+    const user=result.user
+    alert(`user ${user} logged in`)
     window.location.href="frontPage.html"
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log(errorCode)
-  });
-})
+  })
+  .catch((error)=>{
+    console.log(error)
+  })
+}
+
+login.addEventListener("click",userSignIn)
