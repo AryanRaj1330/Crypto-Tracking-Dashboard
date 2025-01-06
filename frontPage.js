@@ -39,7 +39,6 @@ const Data= async()=>{
             const userEmail=user.email
             const id=user.uid
             document.getElementById("account").textContent=`User: ${userEmail}`
-            alert(`email=${userEmail}`)
             console.log(`user=${id}`)
         }
         else{
