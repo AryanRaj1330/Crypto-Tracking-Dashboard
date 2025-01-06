@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+import { getAuth, sendPasswordResetEmail , signInWithEmailAndPassword, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
 
@@ -52,3 +52,18 @@ const userSignIn= async()=>{
 }
 
 login.addEventListener("click",userSignIn)
+
+// reset password
+
+let forgot=document.getElementById("forgot")
+
+forgot.addEventListener("click",()=>{
+  let email=document.getElementById("email").value
+  sendPasswordResetEmail(auth,email)
+  .then(()=>{
+    alert("Password reset link sent to your email")
+  })
+  .catch((error)=>{
+    console.log(error)
+  })
+})
