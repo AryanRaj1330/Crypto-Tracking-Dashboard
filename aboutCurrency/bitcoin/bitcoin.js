@@ -56,39 +56,40 @@ function initializeChart(){
         const chart = new Chart(canvas, {
             type: "bar",
             data: {
-                labels: ["7 Days ago","6 Days ago","5 Days ago","4 Days ago","3 Days ago","2 Days ago","Ysterday","Today"],
+                labels: ["7 Days ago","6 Days ago","5 Days ago","4 Days ago","3 Days ago","2 Days ago","Yesterday","Today"],
                 datasets: [{
-                    label:"Population",
+                    label:"Price",
                     data:priceArray,
                     backgroundColor:[
-                        'rgb(75, 192, 192)', // Bar colors
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)',
-                        'rgb(255, 206, 86)'
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)"
                     ],
                     borderColor:[
-                        'rgba(75, 192, 192, 1)', // Border colors
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(255, 206, 86, 1)'
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)"
                     ],
-                    borderWidth: 2 // Border thickness
+                    borderWidth:2
                 }]
             },
             options:{
-                responsive: true,
+                responsive:true,
+                maintainAspectRatio:false,
                 scales:{
                     x:{
                         grid:{
-                            color: "white" // Grid line color
+                            color:"white"
                         },
                         ticks:{
                             color:"yellow",
@@ -100,7 +101,7 @@ function initializeChart(){
                     },
                     y:{
                         grid:{
-                            color: "white"
+                            color:"white"
                         },
                         ticks:{
                             color:"lightblue",
@@ -109,7 +110,7 @@ function initializeChart(){
                                 family:"Verdana"
                             }
                         },
-                        beginAtZero: true // Start y-axis from zero
+                        beginAtZero:true
                     }
                 },
                 plugins:{
@@ -117,26 +118,28 @@ function initializeChart(){
                         display:true,
                         labels:{
                             font:{
-                                size: 16, // Legend font size
-                                family: 'Arial', // Legend font family
+                                size:16, 
+                                family:"Arial", 
                             },
-                            color:"white" // Legend font color
+                            color:"white"
                         }
                     },
                     tooltip: {
-                        backgroundColor: "rgba(0,0,0,0.8)", // Tooltip background
-                        titleFont: {
-                            size: 14,
-                            family: 'Verdana'
+                        backgroundColor:"rgba(0,0,0,0.8)",
+                        titleFont:{
+                            size:14,
+                            family:'Verdana'
                         },
-                        bodyFont: {
-                            size: 12
+                        bodyFont:{
+                            size:12
                         },
-                        cornerRadius: 4
+                        cornerRadius:4
                     }
                 }
             }
         });
+
+        chart.resize()
 }
 
 document.addEventListener("DOMContentLoaded",fetchHistory())

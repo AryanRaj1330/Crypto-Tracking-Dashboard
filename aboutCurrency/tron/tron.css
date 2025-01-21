@@ -95,3 +95,25 @@ tbody tr:nth-child(even){
 tbody tr:nth-child(odd){
     background-color:#212121;
 }
+
+#chart-parent{
+    height:400px;
+    display:flex;
+    justify-content:center;
+}
+
+#myCanvas{
+    width:80%;
+    margin:0 auto;
+}
+
+#chart{
+    height:100%;
+    width:1270px;
+    margin-left:45px;
+    background-color:#212121;
+    border-radius:5px;
+    margin-bottom:150px;
+    padding-left:15px;
+    padding-bottom:10px;
+}

@@ -1,3 +1,149 @@
+function fetchTimeStamp(){
+    let dates=[]
+
+    for(let i=0;i<=7;i++){
+        let currentDate= new Date()
+        currentDate.setDate(currentDate.getDate()-i)
+        currentDate.setHours(0,0,0,0)
+
+        dates.push(currentDate.getTime())
+    }
+
+    return dates
+}
+
+const weekDates= fetchTimeStamp();
+
+let priceArray=[]
+
+async function fetchHistory(){
+    let timestamp
+    let price=[]
+    for(let i=0;i<8;i++){
+
+        timestamp=weekDates[i];
+
+        try{
+            const response= await fetch(new Request("https://api.livecoinwatch.com/coins/single/history"),{
+                method:"POST",
+                headers: new Headers({
+                    "content-type":"application/json",
+                    "x-api-key":"cb9a09fe-f9f3-40b7-9c38-4883cf04ecf3"
+                }),
+                body:JSON.stringify({
+                    currency:"USD",
+                    code:"DOT",
+                    start:timestamp,
+                    end:timestamp+86400000,
+                    meta:true
+                })
+            })
+            const data= await response.json()
+            price.push(data.history[0].rate)
+        }
+        catch(error){
+            console.log(`error= ${error}`)
+        }
+    } 
+    priceArray=price.reverse()
+    initializeChart()
+}
+
+function initializeChart(){
+    const canvas= document.getElementById("myCanvas")
+        console.log(canvas)
+    
+        const chart = new Chart(canvas, {
+            type: "bar",
+            data: {
+                labels: ["7 Days ago","6 Days ago","5 Days ago","4 Days ago","3 Days ago","2 Days ago","Yesterday","Today"],
+                datasets: [{
+                    label:"Price",
+                    data:priceArray,
+                    backgroundColor:[
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)"
+                    ],
+                    borderColor:[
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)",
+                        "rgb(75, 192, 192)"
+                    ],
+                    borderWidth:2
+                }]
+            },
+            options:{
+                responsive:true,
+                maintainAspectRatio:false,
+                scales:{
+                    x:{
+                        grid:{
+                            color:"white"
+                        },
+                        ticks:{
+                            color:"yellow",
+                            font:{
+                                size:14,
+                                family:"Verdana"
+                            }
+                        }
+                    },
+                    y:{
+                        grid:{
+                            color:"white"
+                        },
+                        ticks:{
+                            color:"lightblue",
+                            font:{
+                                size:14,
+                                family:"Verdana"
+                            }
+                        },
+                        beginAtZero:true
+                    }
+                },
+                plugins:{
+                    legend:{
+                        display:true,
+                        labels:{
+                            font:{
+                                size:16, 
+                                family:"Arial", 
+                            },
+                            color:"white"
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor:"rgba(0,0,0,0.8)",
+                        titleFont:{
+                            size:14,
+                            family:'Verdana'
+                        },
+                        bodyFont:{
+                            size:12
+                        },
+                        cornerRadius:4
+                    }
+                }
+            }
+        });
+
+        chart.resize()
+}
+
+document.addEventListener("DOMContentLoaded",fetchHistory())
+
 async function fetchData(){
     try{
         let response= await fetch(new Request("https://api.livecoinwatch.com/coins/single"),{

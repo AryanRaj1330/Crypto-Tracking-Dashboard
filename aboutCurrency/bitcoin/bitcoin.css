@@ -103,9 +103,10 @@ tbody tr:nth-child(odd){
     justify-content:center;
 }
 
-/* #myCanvas{
-    width:100%;
-} */
+#myCanvas{
+    width:80%;
+    margin:0 auto;
+}
 
 #chart{
     height:100%;
