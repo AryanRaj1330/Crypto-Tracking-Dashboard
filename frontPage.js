@@ -20,20 +20,61 @@ const provider= new GoogleAuthProvider()
 
 let logOut=document.getElementById("log-out")
 
-logOut.addEventListener("click",()=>{
-    signOut(auth)
-    .then(()=>{
-        window.location.href="index.html"
-    })
-    .catch((error)=>{
+logOut.addEventListener("click",async ()=>{
+    // signOut(auth)
+    // .then(()=>{
+    //     window.location.href="index.html"
+    // })
+    // .catch((error)=>{
+    //     console.log(`error=${error}`)
+    // })
+
+    try{
+        await signOut(auth)
+
+        if(typeof window.ethereum!=="undefined"){
+            try{
+                alert("Logged Out!")
+            }
+            catch(error){
+                console.log(`error=${error}`)
+            }
+        }
+
+        window.history.replaceState(null,null,window.location.href)
+        location.replace("index.html")
+    }
+    catch(error){
         console.log(`error=${error}`)
-    })
+    }
 })
+
+
+
 
 // getting user data
 
 const Data= async()=>{
-    onAuthStateChanged(auth,(user)=>{
+
+    if(typeof window.ethereum!=="undefined"){
+        try{
+            const accounts= await window.ethereum.request({method:"eth_accounts"})
+
+            if(accounts.length>0){
+                const userAddress=accounts[0]
+                document.getElementById("account").textContent=`user=${userAddress}`
+            }
+            else{
+                alert("No MetaMask account found")
+                location.replace("index.html")
+            }
+        }
+        catch(error){
+            console.log(`error=${error}`)
+        }
+    }
+
+    onAuthStateChanged(auth, async(user)=>{
         if(user){
             const userName=user.displaName
             const userEmail=user.email
@@ -41,20 +82,28 @@ const Data= async()=>{
             document.getElementById("account").textContent=`User: ${userEmail}`
             console.log(`user=${id}`)
         }
-        else{
+        else if(!user&&(await window.ethereum.request({ method:"eth_accounts"})).length === 0){
             alert("no user found")
-            window.location.href="index.html"
+            location.replace("index.html")
         }
     })
+
 }
 
-window.addEventListener("DOMContentLoaded",()=>{
-    Data()
+window.addEventListener("DOMContentLoaded", async()=>{
+    if (!auth.currentUser && (await window.ethereum.request({ method:"eth_accounts"})).length === 0) {
+        location.replace("index.html")
+    }
+
+    await Data()
 })
 
-window.addEventListener("popstate",()=>{
-    if(!auth.currentUser){
-        window.location.href="index.html"
+window.addEventListener("popstate", async()=>{
+    const googleUser=auth.currentUser
+    const metaMaskAccounts= await window.ethereum.request({ method:"eth_accounts"})
+
+    if(!googleUser && metaMaskAccounts.length===0) {
+        location.replace("index.html")
     }
 })
 

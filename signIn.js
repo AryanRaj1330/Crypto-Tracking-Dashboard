@@ -67,3 +67,25 @@ forgot.addEventListener("click",()=>{
     console.log(error)
   })
 })
+
+// metaMask authentication
+
+const loginMeta=document.getElementById("metaMask")
+
+loginMeta.addEventListener("click", async ()=>{
+  if(typeof window.ethereum!=="undefined"){
+    try{
+      const accounts= await window.ethereum.request({method:"eth_requestAccounts"})
+
+      window.location.href="frontPage.html"
+    }
+
+    catch(error){
+      console.log(`error=${error}`)
+      alert("Error connecting to Meta Mask")
+    }
+  }
+  else{
+    alert("Meta Mask is not installed, Please install Meta Mask to Login with MetaMask")
+  }
+})
